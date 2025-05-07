@@ -1,14 +1,14 @@
-import { Grid, GridRow } from 'components/layout/Grid';
-import BrowsersTable from 'components/metrics/BrowsersTable';
-import CountriesTable from 'components/metrics/CountriesTable';
-import DevicesTable from 'components/metrics/DevicesTable';
-import EventsChart from 'components/metrics/EventsChart';
-import EventsTable from 'components/metrics/EventsTable';
-import HostsTable from 'components/metrics/HostsTable';
-import OSTable from 'components/metrics/OSTable';
-import PagesTable from 'components/metrics/PagesTable';
-import ReferrersTable from 'components/metrics/ReferrersTable';
-import WorldMap from 'components/metrics/WorldMap';
+import { Grid, GridRow } from '@/components/layout/Grid';
+import PagesTable from '@/components/metrics/PagesTable';
+import ReferrersTable from '@/components/metrics/ReferrersTable';
+import BrowsersTable from '@/components/metrics/BrowsersTable';
+import OSTable from '@/components/metrics/OSTable';
+import DevicesTable from '@/components/metrics/DevicesTable';
+import WorldMap from '@/components/metrics/WorldMap';
+import CountriesTable from '@/components/metrics/CountriesTable';
+import EventsTable from '@/components/metrics/EventsTable';
+import EventsChart from '@/components/metrics/EventsChart';
+import HostsTable from '@/components/metrics/HostsTable';
 import { usePathname } from 'next/navigation';
 
 export default function WebsiteTableView({ websiteId }: { websiteId: string }) {

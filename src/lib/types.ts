@@ -1,4 +1,3 @@
-import { NextApiRequest } from 'next';
 import {
   COLLECTION_TYPE,
   DATA_TYPE,
@@ -8,7 +7,6 @@ import {
   REPORT_TYPES,
   ROLES,
 } from './constants';
-import * as yup from 'yup';
 import { TIME_UNIT } from './date';
 import { Dispatch, SetStateAction } from 'react';
 
@@ -25,9 +23,9 @@ export type KafkaTopic = ObjectValues<typeof KAFKA_TOPIC>;
 export type ReportType = ObjectValues<typeof REPORT_TYPES>;
 
 export interface PageParams {
-  query?: string;
-  page?: number;
-  pageSize?: number;
+  search?: string;
+  page?: string | number;
+  pageSize?: string;
   orderBy?: string;
   sortDescending?: boolean;
 }
@@ -52,6 +50,12 @@ export interface DynamicData {
   [key: string]: number | string | number[] | string[];
 }
 
+export interface JsonKeyDynamicData {
+  key: string;
+  value: any;
+  dataType: DynamicDataType;
+}
+
 export interface Auth {
   user?: {
     id: string;
@@ -63,26 +67,6 @@ export interface Auth {
   shareToken?: {
     websiteId: string;
   };
-}
-
-export interface YupRequest {
-  GET?: yup.ObjectSchema<any>;
-  POST?: yup.ObjectSchema<any>;
-  PUT?: yup.ObjectSchema<any>;
-  DELETE?: yup.ObjectSchema<any>;
-}
-
-export interface NextApiRequestQueryBody<TQuery = any, TBody = any> extends NextApiRequest {
-  auth?: Auth;
-  query: TQuery & { [key: string]: string | string[] };
-  body: TBody;
-  headers: any;
-  yup: YupRequest;
-}
-
-export interface NextApiRequestAuth extends NextApiRequest {
-  auth?: Auth;
-  headers: any;
 }
 
 export interface User {
@@ -147,7 +131,7 @@ export interface WebsiteStats {
   visitors: { value: number; prev: number };
   visits: { value: number; prev: number };
   bounces: { value: number; prev: number };
-  totalTime: { value: number; prev: number };
+  totaltime: { value: number; prev: number };
 }
 
 export interface DateRange {
@@ -222,7 +206,8 @@ export interface SessionData {
   subdivision1: string;
   subdivision2: string;
   city: string;
-  ip: string;
-  lat: number;
-  lng: number;
+  ip?: string;
+  lat?: number;
+  lng?: number;
+  userAgent?: string;
 }
