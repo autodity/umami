@@ -16,10 +16,10 @@ jobs:
     strategy:
       matrix:
         include:
-          - node-version: 18.18
-            db-type: postgresql
-          - node-version: 18.18
-            db-type: mysql
+        - node-version: 18.18
+          db-type: postgresql
+        - node-version: 18.18
+          db-type: mysql
 
     steps:
       - uses: actions/checkout@v4
